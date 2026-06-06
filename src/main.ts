@@ -14,8 +14,9 @@ async function bootstrap() {
     }),
   );
 
+  // Allow requests from Vercel and localhost
   app.enableCors({
-    origin: 'http://localhost:5173',
+    origin: true,
     credentials: true,
   });
 
@@ -25,6 +26,8 @@ async function bootstrap() {
 
   const port = process.env.PORT || 3000;
   await app.listen(port);
-  console.log(`🚀 Server running on http://localhost:${port}`);
+
+  console.log(`🚀 Server running on port ${port}`);
 }
+
 bootstrap();
